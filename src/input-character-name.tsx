@@ -36,7 +36,7 @@ const InputCharacterName = ({
     helperTextProps
   );
 
-  const [characterName, setCharacterName] = useState("");
+  const [characterName, setCharacterName] = useState<string>("");
 
   const innerInputProps = merge({}, DEFAULT_INPUT_PROPS, inputProps);
   const sxProps = merge({}, DEFAULT_SX, sx);
@@ -49,7 +49,7 @@ const InputCharacterName = ({
       onChange={(e) => {
         setCharacterName(
           characterName.slice(-1) === " "
-            ? e.target.value.trim()
+            ? e.target.value.trim() + " "
             : e.target.value
         );
         localStorage.setItem("MyPerson", characterName);
