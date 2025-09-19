@@ -15,16 +15,21 @@ interface InputCharacterNameProps {
 }
 
 const DEFAULT_HELPER_TEXT_PROPS: FormHelperTextProps = {
-  sx: {m: 0, fontSize: "0.9rem", fontWeight: "bold"},
+  sx: { m: 0, fontSize: "0.9rem", fontWeight: "bold" },
 };
 
 const DEFAULT_INPUT_PROPS: InputBaseComponentProps = {
-  sx: {padding: 0.5},
+  sx: { padding: 0.5 },
 };
 
-const DEFAULT_SX: TextFieldProps["sx"] = {minWidth: 200};
+const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 };
 
-const InputCharacterName = ({helperText, helperTextProps, inputProps, sx}: InputCharacterNameProps) => {
+const InputCharacterName = ({
+  helperText,
+  helperTextProps,
+  inputProps,
+  sx,
+}: InputCharacterNameProps) => {
   const mergedHelperTextProps = merge(
     {},
     DEFAULT_HELPER_TEXT_PROPS,
@@ -34,7 +39,6 @@ const InputCharacterName = ({helperText, helperTextProps, inputProps, sx}: Input
   const [characterName, setCharacterName] = useState("");
 
   const innerInputProps = merge({}, DEFAULT_INPUT_PROPS, inputProps);
-  console.log(characterName)
   const sxProps = merge({}, DEFAULT_SX, sx);
   return (
     <TextField
@@ -42,8 +46,14 @@ const InputCharacterName = ({helperText, helperTextProps, inputProps, sx}: Input
       size="small"
       helperText={helperText}
       value={characterName}
-      onChange={(e)=>{setCharacterName(e.target.value)
-        console.log(characterName)
+      onChange={(e) => {
+        setCharacterName(
+          characterName.slice(-1) === " "
+            ? e.target.value.trim()
+            : e.target.value
+        );
+        localStorage.setItem("MyPerson", characterName);
+        console.log(localStorage.getItem("MyPerson"));
       }}
       slotProps={{
         formHelperText: mergedHelperTextProps,
