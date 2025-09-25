@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/material";
-import Input from "./input";
+import CharacterNameInput from "./character-name-input";
 
 const Header = () => {
   return (
@@ -12,9 +12,9 @@ const Header = () => {
       }}
     >
       <Stack direction={"row"} width={"100%"} spacing={2} alignItems={"center"}>
-        <Input helperText="Character name" sx={{ width: "max(30%, 200px)" }} />
+        <CharacterNameInput />
 
-        <Stack width={"100%"}>
+        {/* <Stack width={"100%"}>
           <Stack direction={"row"} justifyContent={"space-evenly"}>
             <Input helperText="Class" />
             <Input helperText="Background" />
@@ -25,9 +25,9 @@ const Header = () => {
             <Input helperText="Race" />
             <Input helperText="Alignment" />
             <Input helperText="Experience points" />
-          </Stack>
-        </Stack>
+          </Stack> */}
       </Stack>
+      {/* </Stack> */}
     </Box>
   );
 };
