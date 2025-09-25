@@ -1,5 +1,6 @@
-import {Box, Stack} from "@mui/material";
-import Input from "./input";
+import { Box, Stack } from "@mui/material";
+// import Input from "./input";
+import ExperiencePointInput from "./experience-point-input";
 
 const Header = () => {
   return (
@@ -11,23 +12,23 @@ const Header = () => {
         paddingTop: 2,
       }}
     >
-      <Stack direction={"row"} width={"100%"} spacing={2} alignItems={"center"}>
-        <Input helperText="Character name" sx={{width: "max(30%, 200px)"}} />
+      {/* <Stack direction={"row"} width={"100%"} spacing={2} alignItems={"center"}> */}
+      {/* <CharacterNameInput /> */}
 
-        <Stack width={"100%"}>
+      {/* <Stack width={"100%"}>
           <Stack direction={"row"} justifyContent={"space-evenly"}>
             <Input helperText="Class" />
             <Input helperText="Background" />
             <Input helperText="Player name" />
-          </Stack>
+          </Stack> */}
 
-          <Stack direction={"row"} justifyContent={"space-evenly"}>
-            <Input helperText="Race" />
-            <Input helperText="Alignment" />
-            <Input helperText="Experience points" />
-          </Stack>
-        </Stack>
+      <Stack direction={"row"} justifyContent={"space-evenly"}>
+        {/* <Input helperText="Race" />
+            <Input helperText="Alignment" /> */}
+        <ExperiencePointInput />
       </Stack>
+      {/* </Stack> */}
+      {/* </Stack> */}
     </Box>
   );
 };
