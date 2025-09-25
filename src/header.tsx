@@ -1,5 +1,7 @@
-import {Box, Stack} from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import Input from "./input";
+import SelectItems from "./select-component";
+import { races } from "./races";
 
 const Header = () => {
   return (
@@ -12,7 +14,7 @@ const Header = () => {
       }}
     >
       <Stack direction={"row"} width={"100%"} spacing={2} alignItems={"center"}>
-        <Input helperText="Character name" sx={{width: "max(30%, 200px)"}} />
+        <Input helperText="Character name" sx={{ width: "max(30%, 200px)" }} />
 
         <Stack width={"100%"}>
           <Stack direction={"row"} justifyContent={"space-evenly"}>
@@ -22,7 +24,7 @@ const Header = () => {
           </Stack>
 
           <Stack direction={"row"} justifyContent={"space-evenly"}>
-            <Input helperText="Race" />
+            <SelectItems helperText={"Race"} values={races} />
             <Input helperText="Alignment" />
             <Input helperText="Experience points" />
           </Stack>
