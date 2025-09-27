@@ -9,12 +9,10 @@ const CharacterNameInput = () => {
 
   useEffect(() => {
     if (!isTyping) {
-      setCharacterName(debouncedCharacterName.replace(/ +(?= )/g, ""));
+      setCharacterName(debouncedCharacterName.replace(/ +(?= )/g, "").trim());
+      localStorage.setItem("Character name", debouncedCharacterName);
     }
-  }, [
-    localStorage.setItem("Character name", debouncedCharacterName),
-    isTyping,
-  ]);
+  }, [debouncedCharacterName, isTyping]);
   return (
     <Input
       helperText={"Character name"}

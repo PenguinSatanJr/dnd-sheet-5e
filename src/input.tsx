@@ -7,12 +7,12 @@ import {
 import merge from "lodash.merge";
 
 interface InputProps {
+  value: string;
   helperText?: TextFieldProps["helperText"];
   helperTextProps?: FormHelperTextProps;
   inputProps?: InputBaseComponentProps;
   sx?: TextFieldProps["sx"];
   setValue: (value: string) => void;
-  value: string;
 }
 
 const DEFAULT_HELPER_TEXT_PROPS: FormHelperTextProps = {
@@ -30,8 +30,8 @@ const Input = ({
   helperTextProps,
   inputProps,
   sx,
-  setValue,
   value,
+  setValue,
 }: InputProps) => {
   const mergedHelperTextProps = merge(
     {},
@@ -48,15 +48,15 @@ const Input = ({
       variant="outlined"
       size="small"
       helperText={helperText}
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value);
-      }}
       slotProps={{
         formHelperText: mergedHelperTextProps,
         htmlInput: innerInputProps,
       }}
       sx={sxProps}
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+      }}
     />
   );
 };

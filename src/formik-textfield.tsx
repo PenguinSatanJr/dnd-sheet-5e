@@ -8,7 +8,7 @@ type FormikTextFieldProps = {
 } & TextFieldProps;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const defaultOnChange = () => { };
+const defaultOnChange = () => {};
 
 const FormikTextField = ({
   name,
