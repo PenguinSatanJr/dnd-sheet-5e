@@ -7,23 +7,32 @@ import {
 import merge from "lodash.merge";
 
 interface InputProps {
+  value: string;
   helperText?: TextFieldProps["helperText"];
   helperTextProps?: FormHelperTextProps;
   inputProps?: InputBaseComponentProps;
   sx?: TextFieldProps["sx"];
+  setValue: (value: string) => void;
 }
 
 const DEFAULT_HELPER_TEXT_PROPS: FormHelperTextProps = {
-  sx: {m: 0, fontSize: "0.9rem", fontWeight: "bold"},
+  sx: { m: 0, fontSize: "0.9rem", fontWeight: "bold" },
 };
 
 const DEFAULT_INPUT_PROPS: InputBaseComponentProps = {
-  sx: {padding: 0.5},
+  sx: { padding: 0.5 },
 };
 
-const DEFAULT_SX: TextFieldProps["sx"] = {minWidth: 200};
+const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 };
 
-const Input = ({helperText, helperTextProps, inputProps, sx}: InputProps) => {
+const Input = ({
+  helperText,
+  helperTextProps,
+  inputProps,
+  sx,
+  value,
+  setValue,
+}: InputProps) => {
   const mergedHelperTextProps = merge(
     {},
     DEFAULT_HELPER_TEXT_PROPS,
@@ -44,6 +53,10 @@ const Input = ({helperText, helperTextProps, inputProps, sx}: InputProps) => {
         htmlInput: innerInputProps,
       }}
       sx={sxProps}
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+      }}
     />
   );
 };
