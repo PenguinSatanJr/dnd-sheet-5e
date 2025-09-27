@@ -1,5 +1,5 @@
-import {TextField, type TextFieldProps} from "@mui/material";
-import {FastField, type FieldProps} from "formik";
+import { TextField, type TextFieldProps } from "@mui/material";
+import { FastField, type FieldProps } from "formik";
 import * as React from "react";
 
 type FormikTextFieldProps = {
@@ -7,7 +7,6 @@ type FormikTextFieldProps = {
   onChange?: (event: React.ChangeEvent<unknown>) => void;
 } & TextFieldProps;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
 const defaultOnChange = () => {};
 
 const FormikTextField = ({
@@ -18,7 +17,7 @@ const FormikTextField = ({
 }: FormikTextFieldProps) => {
   return (
     <FastField name={name}>
-      {({field, meta}: FieldProps) => {
+      {({ field, meta }: FieldProps) => {
         const handleChange = (event: React.ChangeEvent<unknown>) => {
           onChange(event);
           field.onChange(event);
@@ -33,7 +32,7 @@ const FormikTextField = ({
 
         return (
           <TextField
-            slotProps={{htmlInput: {sx: {paddingY: 0.5}}}}
+            slotProps={{ htmlInput: { sx: { paddingY: 0.5 } } }}
             {...props}
             {...field}
             value={
