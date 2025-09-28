@@ -18,7 +18,7 @@ const CharacterNameInput = () => {
       helperText={"Character name"}
       value={characterName}
       setValue={setCharacterName}
-    ></Input>
+    />
   );
 };
 
