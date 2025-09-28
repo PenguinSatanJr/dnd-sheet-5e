@@ -22,6 +22,9 @@ export default tseslint.config([
       reactX.configs["recommended-typescript"],
       reactDom.configs.recommended,
     ],
+    rules: {
+      "object-curly-spacing": ["error", "always"],
+    },
     languageOptions: {
       parserOptions: {
         project: ["./tsconfig.node.json", "./tsconfig.app.json"],

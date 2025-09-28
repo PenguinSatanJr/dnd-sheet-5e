@@ -1,4 +1,4 @@
-import {Box, Container} from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Header from "./header";
 
 const App = () => {
@@ -21,14 +21,14 @@ const App = () => {
     >
       <Header />
       <Box
-        sx={{backgroundColor: "#7c8fb6ff", gridArea: "characteristics"}}
+        sx={{ backgroundColor: "#7c8fb6ff", gridArea: "characteristics" }}
       ></Box>
-      <Box sx={{backgroundColor: "#9e5091ff", gridArea: "skills-throws"}}></Box>
-      <Box sx={{backgroundColor: "#beca76ff", gridArea: "battle-stats"}}></Box>
+      <Box sx={{ backgroundColor: "#9e5091ff", gridArea: "skills-throws" }}></Box>
+      <Box sx={{ backgroundColor: "#beca76ff", gridArea: "battle-stats" }}></Box>
       <Box
-        sx={{backgroundColor: "#b3855fff", gridArea: "features-traits"}}
+        sx={{ backgroundColor: "#b3855fff", gridArea: "features-traits" }}
       ></Box>
-      <Box sx={{backgroundColor: "#81142cff", gridArea: "other"}}></Box>
+      <Box sx={{ backgroundColor: "#81142cff", gridArea: "other" }}></Box>
     </Container>
   );
 };

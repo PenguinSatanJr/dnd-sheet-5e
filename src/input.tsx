@@ -14,16 +14,16 @@ interface InputProps {
 }
 
 const DEFAULT_HELPER_TEXT_PROPS: FormHelperTextProps = {
-  sx: {m: 0, fontSize: "0.9rem", fontWeight: "bold"},
+  sx: { m: 0, fontSize: "0.9rem", fontWeight: "bold" },
 };
 
 const DEFAULT_INPUT_PROPS: InputBaseComponentProps = {
-  sx: {padding: 0.5},
+  sx: { padding: 0.5 },
 };
 
-const DEFAULT_SX: TextFieldProps["sx"] = {minWidth: 200};
+const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 };
 
-const Input = ({helperText, helperTextProps, inputProps, sx}: InputProps) => {
+const Input = ({ helperText, helperTextProps, inputProps, sx }: InputProps) => {
   const mergedHelperTextProps = merge(
     {},
     DEFAULT_HELPER_TEXT_PROPS,
