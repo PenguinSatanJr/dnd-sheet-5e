@@ -26,11 +26,11 @@ const DEFAULT_INPUT_PROPS: InputBaseComponentProps = {
 const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 };
 
 const Input = ({
+  value,
   helperText,
   helperTextProps,
   inputProps,
   sx,
-  value,
   setValue,
 }: InputProps) => {
   const mergedHelperTextProps = merge(
@@ -45,15 +45,15 @@ const Input = ({
 
   return (
     <TextField
-      variant="outlined"
-      size="small"
+      value={value}
       helperText={helperText}
       slotProps={{
         formHelperText: mergedHelperTextProps,
         htmlInput: innerInputProps,
       }}
       sx={sxProps}
-      value={value}
+      variant="outlined"
+      size="small"
       onChange={(e) => {
         setValue(e.target.value);
       }}
