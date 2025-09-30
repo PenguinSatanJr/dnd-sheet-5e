@@ -1,5 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import CharacterNameInput from "./character-name-input";
+import SelectItems from "./select-component";
+import { races } from "./races";
 
 const Header = () => {
   return (
@@ -13,6 +15,11 @@ const Header = () => {
     >
       <Stack direction={"row"} width={"100%"} spacing={2} alignItems={"center"}>
         <CharacterNameInput />
+        <Stack width={"100%"}>
+          <Stack direction={"row"} justifyContent={"space-evenly"}>
+            <SelectItems helperText={"Race"} values={races} />
+          </Stack>
+        </Stack>
       </Stack>
     </Box>
   );
