@@ -4,6 +4,7 @@ import {
   type InputBaseComponentProps,
   type TextFieldProps,
 } from "@mui/material";
+import { memo, useMemo } from "react";
 import merge from "lodash.merge";
 
 interface InputProps {
@@ -25,40 +26,49 @@ const DEFAULT_INPUT_PROPS: InputBaseComponentProps = {
 
 const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 };
 
-const Input = ({
-  value,
-  helperText,
-  helperTextProps,
-  inputProps,
-  sx,
-  setValue,
-}: InputProps) => {
-  const mergedHelperTextProps = merge(
-    {},
-    DEFAULT_HELPER_TEXT_PROPS,
-    helperTextProps
-  );
+const Input = memo(
+  ({
+    value,
+    helperText,
+    helperTextProps,
+    inputProps,
+    sx,
+    setValue,
+  }: InputProps) => {
+    const mergedHelperTextProps = useMemo(
+      () => merge({}, DEFAULT_HELPER_TEXT_PROPS, helperTextProps),
+      [helperTextProps]
+    );
 
-  const innerInputProps = merge({}, DEFAULT_INPUT_PROPS, inputProps);
+    const innerInputProps = useMemo(
+      () => merge({}, DEFAULT_INPUT_PROPS, inputProps),
+      [inputProps]
+    );
 
-  const sxProps = merge({}, DEFAULT_SX, sx);
+    const sxProps = useMemo(
+      () => merge({}, DEFAULT_SX, sx),
+      [sx]
+    );
 
-  return (
-    <TextField
-      value={value}
-      helperText={helperText}
-      slotProps={{
-        formHelperText: mergedHelperTextProps,
-        htmlInput: innerInputProps,
-      }}
-      sx={sxProps}
-      variant="outlined"
-      size="small"
-      onChange={(e) => {
-        setValue(e.target.value);
-      }}
-    />
-  );
-};
+    return (
+      <TextField
+        value={value}
+        helperText={helperText}
+        slotProps={{
+          formHelperText: mergedHelperTextProps,
+          htmlInput: innerInputProps,
+        }}
+        sx={sxProps}
+        variant="outlined"
+        size="small"
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+      />
+    );
+
+
+  }
+);
 
 export default Input;
