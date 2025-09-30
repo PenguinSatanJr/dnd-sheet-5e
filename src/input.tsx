@@ -4,6 +4,7 @@ import {
   type InputBaseComponentProps,
   type TextFieldProps,
 } from "@mui/material";
+import { memo, useMemo } from "react";
 import merge from "lodash.merge";
 
 interface InputProps {
@@ -17,48 +18,57 @@ interface InputProps {
 
 const DEFAULT_HELPER_TEXT_PROPS: FormHelperTextProps = {
   sx: { m: 0, fontSize: "0.9rem", fontWeight: "bold" },
-};
+} as const;
 
 const DEFAULT_INPUT_PROPS: InputBaseComponentProps = {
-  sx: { padding: 0.5 },
+  sx: { padding: 0.5 } as const,
 };
 
-const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 };
+const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 } as const;
 
-const Input = ({
-  value,
-  helperText,
-  helperTextProps,
-  inputProps,
-  sx,
-  setValue,
-}: InputProps) => {
-  const mergedHelperTextProps = merge(
-    {},
-    DEFAULT_HELPER_TEXT_PROPS,
-    helperTextProps
-  );
+const Input = memo(
+  ({
+    value,
+    helperText,
+    helperTextProps,
+    inputProps,
+    sx,
+    setValue,
+  }: InputProps) => {
+    const mergedHelperTextProps = useMemo(
+      () => merge({}, DEFAULT_HELPER_TEXT_PROPS, helperTextProps),
+      [helperTextProps]
+    );
 
-  const innerInputProps = merge({}, DEFAULT_INPUT_PROPS, inputProps);
+    const innerInputProps = useMemo(
+      () => merge({}, DEFAULT_INPUT_PROPS, inputProps),
+      [inputProps]
+    );
 
-  const sxProps = merge({}, DEFAULT_SX, sx);
+    const sxProps = useMemo(
+      () => merge({}, DEFAULT_SX, sx),
+      [sx]
+    );
 
-  return (
-    <TextField
-      value={value}
-      helperText={helperText}
-      slotProps={{
-        formHelperText: mergedHelperTextProps,
-        htmlInput: innerInputProps,
-      }}
-      sx={sxProps}
-      variant="outlined"
-      size="small"
-      onChange={(e) => {
-        setValue(e.target.value);
-      }}
-    />
-  );
-};
+    return (
+      <TextField
+        value={value}
+        helperText={helperText}
+        slotProps={{
+          formHelperText: mergedHelperTextProps,
+          htmlInput: innerInputProps,
+        }}
+        sx={sxProps}
+        variant="outlined"
+        size="small"
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+      />
+    );
+  }
+);
+
+Input.displayName = 'Input'
 
 export default Input;
