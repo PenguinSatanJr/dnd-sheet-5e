@@ -18,13 +18,13 @@ interface InputProps {
 
 const DEFAULT_HELPER_TEXT_PROPS: FormHelperTextProps = {
   sx: { m: 0, fontSize: "0.9rem", fontWeight: "bold" },
-};
+} as const;
 
 const DEFAULT_INPUT_PROPS: InputBaseComponentProps = {
-  sx: { padding: 0.5 },
+  sx: { padding: 0.5 } as const,
 };
 
-const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 };
+const DEFAULT_SX: TextFieldProps["sx"] = { minWidth: 200 } as const;
 
 const Input = memo(
   ({
@@ -68,5 +68,7 @@ const Input = memo(
     );
   }
 );
+
+Input.displayName = 'Input'
 
 export default Input;
